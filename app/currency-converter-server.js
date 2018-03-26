@@ -1,11 +1,9 @@
-#!/usr/bin/env node
-const fetch = require('node-fetch');
-const thrift = require('thrift');
-const CurrencyConverter = require('../gen-nodejs/CurrencyConverter');
-const CurrencyConverterTypes = require('../gen-nodejs/currency-converter_types');
+import fetch from 'node-fetch';
+import thrift from 'thrift';
+import CurrencyConverter from '../gen-nodejs/CurrencyConverter';
+import CurrencyConverterTypes from '../gen-nodejs/currency-converter_types';
 
-const hostname = '127.0.0.1';
-const port = 9090;
+const port = process.env.PORT || 9090;
 const currencyUrl = 'https://openexchangerates.org/api/latest.json?app_id=6a63d97a8e1543669bca587c6adf876a';
 const currencyUpdateInterval = 3600000;
 
@@ -66,7 +64,11 @@ async function init() {
   await resetFetchCurrencyCooldown();
 }
 
-server.listen(port, hostname, async () => {
-  await init();
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+try {
+  server.listen(port, async () => {
+    await init();
+    console.log(`Server running on port:${port}`);
+  });
+} catch (e) {
+  console.error(e);
+}

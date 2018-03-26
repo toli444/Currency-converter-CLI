@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 const thrift = require('thrift');
 const CurrencyConverter = require('../gen-nodejs/CurrencyConverter');
-const CurrencyConverterTypes = require('../gen-nodejs/currency-converter_types');
-const assert = require('assert');
 
 const transport = thrift.TBufferedTransport;
 const protocol = thrift.TBinaryProtocol;
@@ -19,13 +17,13 @@ const [value, currencies] = process.argv.slice(2);
 const parcedValue = parseFloat(value);
 
 if (!value) {
-    console.log('You should specify a value which you want to convert (example: ./currency-converter-client.js 10 rub/byn');
-    process.exit();
+  console.log('You should specify a value which you want to convert (example: ./currency-converter-client.js 10 rub/byn');
+  process.exit();
 }
 
 if (!currencies) {
-    console.log('You should specify converting currencies (example: ./currency-converter-client.js 10 rub/byn');
-    process.exit();
+  console.log('You should specify converting currencies (example: ./currency-converter-client.js 10 rub/byn');
+  process.exit();
 }
 
 let [, currencyFrom, currencyTo] = (currencies && currencies.match(matchCurrenciesRegExp)) || [];

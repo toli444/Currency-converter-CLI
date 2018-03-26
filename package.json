@@ -1,0 +1,21 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "currency converter api using thrift",
+  "main": "currency-converter.js",
+  "dependencies": {
+    "node-fetch": "^2.1.1",
+    "thrift": "^0.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0"
+  },
+  "scripts": {
+    "lint": "eslint app/*.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anatoly Semeniaka",
+  "license": "ISC"
+}

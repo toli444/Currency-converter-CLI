@@ -4,8 +4,9 @@ const CurrencyConverter = require('../gen-nodejs/CurrencyConverter');
 
 const transport = thrift.TBufferedTransport;
 const protocol = thrift.TBinaryProtocol;
+const serverAddress = '167.99.196.20';
 
-const connection = thrift.createConnection('localhost', 9090, {
+const connection = thrift.createConnection(serverAddress, 9090, {
   transport,
   protocol,
 });
@@ -29,7 +30,7 @@ if (!currencies) {
 let [, currencyFrom, currencyTo] = (currencies && currencies.match(matchCurrenciesRegExp)) || [];
 
 if (!currencyFrom || !currencyTo) {
-  console.log('Invalid currency format. Try something like: byn\/rub');
+  console.log('Invalid currency format. Try something like: byn/rub');
   process.exit();
 }
 

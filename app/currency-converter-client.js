@@ -4,7 +4,7 @@ const CurrencyConverter = require('../gen-nodejs/CurrencyConverter');
 
 const transport = thrift.TBufferedTransport;
 const protocol = thrift.TBinaryProtocol;
-const serverAddress = '167.99.196.20';
+const serverAddress = 'localhost';
 
 const connection = thrift.createConnection(serverAddress, 9090, {
   transport,
